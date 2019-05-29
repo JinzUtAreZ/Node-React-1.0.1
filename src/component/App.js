@@ -1,44 +1,48 @@
 import React, { Component } from 'react';
-import BSTable from './BootStrapTable';
+// import BSTable from './BootStrapTable';
 
 class App extends Component {
     constructor(props) {
       super(props);
-      this.state = {
-        status: '',
-        timestart: '',
-        endtime: '',
-        location: '',
-        dockname: '',
-        rowid: ''
+       this.state = {
+        items: []
       };
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+      fetch(`/api/dataload`)
+      //fetch(`https://jsonplaceholder.typicode.com/users`)
+        .then(res => res.json())
+        .then(json => { 
+          this.setState({ 
+            items: json.recordset
+          })
+      })
+      //.catch(err => console.log(err));
     }
   
-    handleChange(event) {
-      this.setState({ name: event.target.value });
-    }
+    // callApi = async () => {
+    //   const response = await fetch('/api/hello');
+    //   const body = await response.json();
   
-    handleSubmit(event) {
-      event.preventDefault();
-      fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      //fetch(`/api/greeting`)
-        .then(response => response.json())
-        .then(state => this.setState(state));
-    }
+    //   if (response.status !== 200) throw Error(body.message);
   
+    //   return body;
+    // };
+
     render() {
-      console.log(this.state);
+      //console.log(this.state);
+      var { items } = this.state;
       return (
         <div className="App">
-          <header className="App-header">
-           <form onSubmit={this.handleSubmit}>
-              <label htmlFor="name">Load data: </label>
-              <button type="submit">Submit</button>
-            </form>
-            <BSTable data={this.state}/>
-          </header>
+            {/* <BSTable data={this.state}/> */}
+            <ul>
+                {items.map(item =>(
+                    <li key={item.RowID}>
+                      {item.StatusDesc} --- {item.StartTime}
+                      </li>
+                ))};
+            </ul>
         </div>
       );
     }
