@@ -53,6 +53,7 @@ git bash update instructions
 5. git commit -m "Description of changes"
 6. git status (check updates)
 7. git push origin master
+8. git remote rm origin -- add version and renew link in github.
 
 
 node server

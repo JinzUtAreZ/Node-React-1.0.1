@@ -9,3 +9,8 @@
 7. npm run server ---- to run webservice files from server.
 8. npm start  ---- to run react application.
 9. npm run dev  ---- to run both node server and react application.
+10. npm install -g json-server 
+"start": "react-scripts start & json-server --watch sample.json --port 3004" ---- put in package.json to run json files..
+11. npm install --save react-router-dom
+
+watch code realm https://www.youtube.com/watch?v=WzX0zNAgScA&list=PLcCp4mjO-z9_4Wak3Uq8dEWC6H1fbSNgL&index=3

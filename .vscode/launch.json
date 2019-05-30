@@ -5,11 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "chrome",
             "request": "launch",
             "name": "Launch Program",
             // "program": "${workspaceFolder}\\index.js"
-            "program": "${workspaceFolder}/server/index.js"
+            "url": "http://localhost:3000/",
+            "program": "${workspaceFolder}"
         }
     ]
 }
